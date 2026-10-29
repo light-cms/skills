@@ -3,8 +3,8 @@ name: lightcms-skills
 description: Build, customize, audit, and publish LightCMS-compatible static-site templates. Use this skill whenever the user mentions LightCMS templates, a LightCMS-ready repository, or wants to create, port, or customize a blog or documentation starter for Hugo, Astro/Starlight, Zola, Eleventy, Jekyll, Zine, or mdBook. Also use it for content-folder layout, YAML front matter, slug and filename compatibility, mise tasks, GitHub Actions deployment, or verifying that a site still builds after LightCMS creates a file. Trigger it even when the user only says “make a template like the light-cms org” or “connect this site to LightCMS.”
 license: Apache-2.0
 metadata:
-  labels: "lightcms,hugo,astro,zola,eleventy,jekyll,zine,mdbook,static-site,frontmatter"
-  maintainer: light-cms
+labels: "lightcms,hugo,astro,zola,eleventy,jekyll,zine,mdbook,static-site,frontmatter"
+maintainer: light-cms
 ---
 
 # LightCMS Templates
