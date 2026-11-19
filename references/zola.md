@@ -62,12 +62,15 @@ Zola supports TOML front matter with `+++` and YAML front matter with `---`. Lig
 
 ```markdown
 ---
+
 title: First Post
 description: What this starter includes.
 date: 2026-01-10T00:00:00Z
 draft: false
 tags:
-  - intro
+
+- intro
+
 ---
 
 Body text.
@@ -77,6 +80,7 @@ The section index:
 
 ```markdown
 ---
+
 title: Blog
 description: All posts.
 sort_by: date

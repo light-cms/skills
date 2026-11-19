@@ -39,22 +39,22 @@ import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://example.github.io/",
-  base: "/my-blog",
-  integrations: [
-    starlight({
-      title: "My Blog",
-      description: "A short description.",
-      customCss: ["./src/styles/global.css", "./src/styles/custom.css"],
-      pagefind: true,
-      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
-      pagination: true,
-      sidebar: [
-        { label: "Start here", items: ["intro"] },
-        { label: "Blog", autogenerate: { directory: "blog" } },
-      ],
-    }),
-  ],
+	site: "https://example.github.io/",
+	base: "/my-blog",
+	integrations: [
+		starlight({
+			title: "My Blog",
+			description: "A short description.",
+			customCss: ["./src/styles/global.css", "./src/styles/custom.css"],
+			pagefind: true,
+			tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
+			pagination: true,
+			sidebar: [
+				{ label: "Start here", items: ["intro"] },
+				{ label: "Blog", autogenerate: { directory: "blog" } },
+			],
+		}),
+	],
 });
 ```
 
@@ -76,7 +76,7 @@ import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 
 export const collections = {
-  docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
+	docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
 };
 ```
 
@@ -84,12 +84,15 @@ A post:
 
 ```markdown
 ---
+
 title: First Post
 description: What this starter includes.
 date: "2026-01-10T00:00:00Z"
 draft: false
 tags:
-  - intro
+
+- intro
+
 ---
 
 Body text.
@@ -102,16 +105,16 @@ import { z } from "astro/zod";
 
 // src/content.config.ts
 export const collections = {
-  docs: defineCollection({
-    loader: docsLoader(),
-    schema: docsSchema({
-      extend: z.object({
-        date: z.string().optional(),
-        tags: z.array(z.string()).default([]),
-        keywords: z.array(z.string()).default([]),
-      }),
-    }),
-  }),
+	docs: defineCollection({
+		loader: docsLoader(),
+		schema: docsSchema({
+			extend: z.object({
+				date: z.string().optional(),
+				tags: z.array(z.string()).default([]),
+				keywords: z.array(z.string()).default([]),
+			}),
+		}),
+	}),
 };
 ```
 
@@ -139,15 +142,17 @@ LightCMS's default timestamp filename therefore becomes `/blog/1792167272/`. Fix
 
 ```ts
 docsLoader({
-  generateId: ({ entry, data }) => {
-    const title = typeof data.title === "string" ? data.title : entry;
-    const slug = title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "");
-    const directory = entry.includes("/") ? entry.slice(0, entry.lastIndexOf("/") + 1) : "";
-    return `${directory}${slug}`;
-  },
+	generateId: ({ entry, data }) => {
+		const title = typeof data.title === "string" ? data.title : entry;
+		const slug = title
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, "-")
+			.replace(/^-|-$/g, "");
+		const directory = entry.includes("/")
+			? entry.slice(0, entry.lastIndexOf("/") + 1)
+			: "";
+		return `${directory}${slug}`;
+	},
 });
 ```
 

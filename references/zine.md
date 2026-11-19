@@ -115,10 +115,10 @@ The mapping in the org template:
 
 ```js
 const DIRECTORY_MAPPINGS = [
-  { src: "content/posts", dest: "content/blog", layout: "post.shtml" },
-  { src: "content/blog", dest: "content/blog", layout: "post.shtml" },
-  { src: "content/devlogs", dest: "content/devlog", layout: "page.shtml" },
-  { src: "content/notes", dest: "content/notes", layout: "page.shtml" },
+	{ src: "content/posts", dest: "content/blog", layout: "post.shtml" },
+	{ src: "content/blog", dest: "content/blog", layout: "post.shtml" },
+	{ src: "content/devlogs", dest: "content/devlog", layout: "page.shtml" },
+	{ src: "content/notes", dest: "content/notes", layout: "page.shtml" },
 ];
 ```
 

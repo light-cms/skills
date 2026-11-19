@@ -1,6 +1,7 @@
 # Deployment Reference
 
-The template's build command is the contract. Every host should run the same command a contributor runs locally, and every host should publish the generator's real output directory.
+The template's build command is the contract. Every host should run the same command a contributor 
+runs locally, and every host should publish the generator's real output directory.
 
 ## Output directories
 

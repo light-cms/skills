@@ -102,12 +102,15 @@ Test the result. Jekyll's `:title` placeholder is derived from the filename, so 
 
 ```markdown
 ---
+
 title: First Post
 description: What this starter includes.
 date: "2026-01-10T00:00:00Z"
 draft: false
 tags:
-  - intro
+
+- intro
+
 ---
 
 Body text.

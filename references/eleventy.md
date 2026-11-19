@@ -33,34 +33,34 @@ LightCMS shows the top-level `src` collection; writers work in the `posts` folde
 ```js
 // eleventy.config.js
 export default function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy({ "src/css": "css" });
-  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+	eleventyConfig.addPassthroughCopy({ "src/css": "css" });
+	eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
-  eleventyConfig.addCollection("posts", (collectionApi) => {
-    return collectionApi
-      .getFilteredByGlob("src/posts/*.{md,njk,html}")
-      .filter((post) => !post.data.draft)
-      .sort((a, b) => a.date - b.date);
-  });
+	eleventyConfig.addCollection("posts", (collectionApi) => {
+		return collectionApi
+			.getFilteredByGlob("src/posts/*.{md,njk,html}")
+			.filter((post) => !post.data.draft)
+			.sort((a, b) => a.date - b.date);
+	});
 
-  eleventyConfig.addFilter("readableDate", (date) => {
-    return new Date(date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  });
+	eleventyConfig.addFilter("readableDate", (date) => {
+		return new Date(date).toLocaleDateString("en-US", {
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+		});
+	});
 
-  return {
-    dir: {
-      input: "src",
-      includes: "_includes",
-      output: "_site",
-    },
-    pathPrefix: "/eleventy_blog/",
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-  };
+	return {
+		dir: {
+			input: "src",
+			includes: "_includes",
+			output: "_site",
+		},
+		pathPrefix: "/eleventy_blog/",
+		markdownTemplateEngine: "njk",
+		htmlTemplateEngine: "njk",
+	};
 }
 ```
 
@@ -75,12 +75,15 @@ The templates use the `url` filter for links, which applies `pathPrefix`. Hand-w
 
 ```markdown
 ---
+
 title: First Post
 description: What this starter includes.
 date: "2026-01-10T00:00:00Z"
 draft: false
 tags:
-  - intro
+
+- intro
+
 ---
 
 Body text.
@@ -90,7 +93,7 @@ The directory data file applies the layout automatically:
 
 ```json
 {
-  "layout": "post.njk"
+	"layout": "post.njk"
 }
 ```
 
@@ -113,17 +116,17 @@ A timestamp filename becomes `/posts/1792167272/`. Two ways to prevent that:
 
 ```js
 export default {
-  layout: "post.njk",
-  eleventyComputed: {
-    permalink: (data) => {
-      const source = data.slug || data.title || data.page.fileSlug;
-      const slug = String(source)
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-|-$/g, "");
-      return `/posts/${slug}/`;
-    },
-  },
+	layout: "post.njk",
+	eleventyComputed: {
+		permalink: (data) => {
+			const source = data.slug || data.title || data.page.fileSlug;
+			const slug = String(source)
+				.toLowerCase()
+				.replace(/[^a-z0-9]+/g, "-")
+				.replace(/^-|-$/g, "");
+			return `/posts/${slug}/`;
+		},
+	},
 };
 ```
 

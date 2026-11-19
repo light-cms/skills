@@ -70,12 +70,15 @@ Hugo accepts YAML, so a LightCMS-created file works:
 
 ```markdown
 ---
+
 title: First Post
 description: What this starter includes.
 date: "2026-01-10T00:00:00Z"
 draft: false
 tags:
-  - intro
+
+- intro
+
 ---
 
 Body text.

@@ -113,6 +113,7 @@ description: One sentence used for SEO and cards.
 date: '2026-10-14T10:00:00Z'
 draft: false
 tags:
+
 - lightcms
 - static-sites
   keywords:

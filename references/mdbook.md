@@ -60,6 +60,7 @@ mdBook renders the chapter Markdown as-is. A LightCMS-created file starts with:
 
 ```markdown
 ---
+
 title: My Chapter
 date: "2026-10-14T10:00:00Z"
 draft: false
@@ -78,17 +79,17 @@ import { cp, readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 async function strip(dir) {
-  for (const entry of await readdir(dir, { withFileTypes: true })) {
-    const path = join(dir, entry.name);
-    if (entry.isDirectory()) {
-      await strip(path);
-      continue;
-    }
-    if (!entry.name.endsWith(".md")) continue;
-    const source = await readFile(path, "utf8");
-    const cleaned = source.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, "");
-    await writeFile(path, cleaned);
-  }
+	for (const entry of await readdir(dir, { withFileTypes: true })) {
+		const path = join(dir, entry.name);
+		if (entry.isDirectory()) {
+			await strip(path);
+			continue;
+		}
+		if (!entry.name.endsWith(".md")) continue;
+		const source = await readFile(path, "utf8");
+		const cleaned = source.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, "");
+		await writeFile(path, cleaned);
+	}
 }
 
 await cp("src", ".build-src", { recursive: true });
